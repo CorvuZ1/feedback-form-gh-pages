@@ -1,0 +1,26 @@
+@media (max-width: 530px) {
+  .form {
+    padding: 26px;
+
+    &__group {
+      flex-basis: 100%;
+    }
+
+    &__description {
+      text-align: center;
+    }
+
+    &__error {
+      padding-left: 6px;
+    }
+
+    &__group:not(:first-child),
+    &__description {
+      margin-top: 48px;
+    }
+
+    &__submit {
+      max-width: 100%;
+    }
+  }
+}

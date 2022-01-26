@@ -1,0 +1,190 @@
+@import "_font.scss";
+
+$red: #F36363;
+$green: #1BB55C;
+$light_dark: #263238;
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-color: #E5E5E5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 17px;
+}
+
+.form {
+  $block: &;
+
+  position: relative;
+  background-color: #ffffff;
+  padding: 45px 56px;
+  max-width: 598px;
+
+  &__title {
+    text-align: center;
+    color: $light_dark;
+    @include fontSize(24,21);
+    @include font(600, normal);
+  }
+
+  &__data {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__personal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__group {
+    position: relative;
+    height: 56px;
+    flex-basis: calc(50% - 6px);
+
+    &:nth-child(3) {
+      flex-grow: 0;
+      margin-top: 33px;
+    }
+
+    &:last-child {
+      flex-basis: 100%;
+      margin-top: 33px;
+      height: 120px;
+    }
+
+    &:last-child #{$block}__label {
+      transform: translateY(-110px) translateX(20px);
+    }
+  }
+
+  &__label {
+    font-size: 16px;
+    color: $light_dark;
+    display: block;
+    transform: translateY(-38px) translateX(20px);
+    transition: all 0.3s;
+    transform-origin: 133px 0px;
+    cursor: text;
+    @include font(500, normal);
+
+    &--error {
+      color: $red;
+    }
+  }
+
+  &__input {
+    font-size: 16px;
+    padding: 10px 12px;
+    transition: all 0.1s;
+    border: 1px solid rgba(38, 50, 56, 0.16);
+    color: $light_dark;
+    line-height: 1.5;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    @include font(400, normal);
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      border: 2px solid $green;
+      opacity: 1;
+    }
+
+    &:focus + #{$block}__label,
+    &:not(:placeholder-shown) #{$block}__label {
+      color: $green;
+    }
+
+    &:focus + #{$block}__label,
+    &:not(:placeholder-shown) + #{$block}__label {
+      transform: translateY(-64px) scale(0.85);
+      background-color:white;
+      padding: 0 3px;
+      width: max-content;
+    }
+  
+    #{$block}__group:last-child &:focus + #{$block}__label,
+    #{$block}__group:last-child &:not(:placeholder-shown) + #{$block}__label {
+      transform: translateY(-132px) scale(0.85);
+      padding: 0 3px;
+      width: max-content;
+    }
+  }
+  
+  &__description {
+    margin-top: 25px;
+    @include font(400, normal);
+    line-height: 1.67;
+    font-size: 12px;
+    padding: 0 15px;
+  }
+
+  &__doc-link:focus {
+    @include font(600, normal);
+  }
+
+  &__submit {
+    margin-top: 12px;
+    background-color: $green;
+    max-width: 205px;
+    width: 100%;
+    height: 45px;
+    color: white;
+    @include font(500, normal);
+    font-size: 16px;
+    cursor: pointer;
+    
+    &:focus {
+      outline: 2px solid $light_dark;
+    }
+  }
+
+  &__input, 
+  &__submit {
+    border-radius: 8px;
+  }
+
+  &__error {
+    color: $red;
+    font-size: 12px;
+    display: block;
+    position: relative;
+    top: -17px;
+    padding-left: 18px;
+  }
+
+  &__input--invalid,
+  &--invalid {
+    border: 2px solid $red;
+  }
+
+  &--valid {
+    border: 2px solid $green;
+  }
+}
+
+@import "_media.scss";

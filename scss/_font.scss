@@ -1,0 +1,31 @@
+$path: "fonts/Inter/";
+
+@font-face {
+  font-family: "Inter"; 
+  src: url("#{$path}Inter-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter"; 
+  src: url("#{$path}Inter-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter"; 
+  src: url("#{$path}Inter-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@mixin font($fontWeight, $fontStyle) {
+  font-weight: $fontWeight;
+  font-style: $fontStyle;
+}
+
+@mixin fontSize($origFontSize, $minFontSize) {
+  font-size: calc(#{$minFontSize + px} + (#{$origFontSize - $minFontSize}) * ((100vw - 320px) / (1920 - 320)));
+}
